@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float runSpeed = 10f;
+    [SerializeField] float runSpeed = 2.5f;
     [SerializeField] float jumpSpeed = 5f;
 
     Vector2 moveInput;
