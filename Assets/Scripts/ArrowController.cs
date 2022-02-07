@@ -6,6 +6,12 @@ using UnityEngine;
 public class ArrowController : MonoBehaviour
 {
     [SerializeField] float arrowSpeed = 5f;
+    PlayerController player;
+
+    void Start() {
+        player = FindObjectOfType<PlayerController>();
+        arrowSpeed *= Mathf.Sign(player.transform.localScale.x);
+    }
 
     void Update()
     {
@@ -18,7 +24,7 @@ public class ArrowController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Enemy"&& other.GetType() == typeof(CapsuleCollider2D)){
+        if(other.tag == "Enemy" && other.GetType() == typeof(CapsuleCollider2D)){
             Destroy(other.gameObject);
             Destroy(gameObject);
         }

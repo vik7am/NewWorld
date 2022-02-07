@@ -13,7 +13,7 @@ public class BowController : MonoBehaviour
     }
 
     public void OnFire(InputValue value){
-        currentArrow = Instantiate(arrow, transform.position, Quaternion.identity);
+        currentArrow = Instantiate(arrow, transform.GetChild(0).position, Quaternion.identity);
         StartCoroutine(DestroyArrow(currentArrow));
     }
 
