@@ -51,18 +51,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Wepon1",
+                    "name": "Weapon1",
                     "type": "Button",
                     "id": "1f53ef5e-6118-4988-adc9-7500e8860be0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "NoWepon",
-                    "type": "Button",
-                    "id": "e9c3108f-32f9-4963-9a85-03b90699fde3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -292,6 +283,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a27a3b3c-4be5-4183-bcad-f9d8029f813a",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f9e8ec9b-abcd-46e2-aeab-b298f9fadd63",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -319,18 +321,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Wepon1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "74bbaa4e-34af-44f5-ba89-8c6410664e7c",
-                    "path": "<Keyboard>/0",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "NoWepon",
+                    "action": "Weapon1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

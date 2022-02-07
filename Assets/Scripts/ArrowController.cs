@@ -18,7 +18,7 @@ public class ArrowController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Enemy"){
+        if(other.tag == "Enemy"&& other.GetType() == typeof(CapsuleCollider2D)){
             Destroy(other.gameObject);
             Destroy(gameObject);
         }

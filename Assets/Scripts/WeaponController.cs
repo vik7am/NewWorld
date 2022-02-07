@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WeponController : MonoBehaviour
+public class WeaponController : MonoBehaviour
 {
     BowController bowController;
     bool isActive;
@@ -14,8 +14,7 @@ public class WeponController : MonoBehaviour
         bowController.gameObject.SetActive(false);
     }
 
-    void OnWepon1(InputValue value){
-        Debug.Log("Weapon out");
+    void OnWeapon1(InputValue value){
         isActive = bowController.gameObject.activeInHierarchy;
         bowController.gameObject.SetActive(!isActive);
     }

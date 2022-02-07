@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1974559813861981141}
   - component: {fileID: 4800716658775105524}
-  - component: {fileID: 8696200966117554988}
   - component: {fileID: 8532919489137921174}
+  - component: {fileID: 1098693653422699806}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -84,20 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8696200966117554988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974559813861981140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec4b3554071bc54d9a399af7a21269e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEquipped: 0
-  arrow: {fileID: 2548366794053982583, guid: 52a3891d92eccd24eb4be2334a57e583, type: 3}
 --- !u!114 &8532919489137921174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,3 +114,16 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1098693653422699806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974559813861981140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec4b3554071bc54d9a399af7a21269e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrow: {fileID: 2548366794053982583, guid: 52a3891d92eccd24eb4be2334a57e583, type: 3}

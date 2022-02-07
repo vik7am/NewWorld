@@ -49,4 +49,6 @@ public class PlayerController : MonoBehaviour
         if(isMoving)
             transform.localScale = new Vector2(Mathf.Sign(myrigidbody.velocity.x), 1f);
     }
+
+    
 }

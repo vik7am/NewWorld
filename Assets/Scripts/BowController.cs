@@ -8,6 +8,10 @@ public class BowController : MonoBehaviour
     [SerializeField]GameObject arrow;
     GameObject currentArrow;
 
+    private void Start() {
+        
+    }
+
     public void OnFire(InputValue value){
         currentArrow = Instantiate(arrow, transform.position, Quaternion.identity);
         StartCoroutine(DestroyArrow(currentArrow));
