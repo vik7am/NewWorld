@@ -1923,26 +1923,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1344701204}
---- !u!1 &1853886587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3423343183354081224, guid: 05b5fe46b713ec24fb2650dbb4dce748, type: 3}
-  m_PrefabInstance: {fileID: 54901041926197704}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1853886589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853886587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33d13b355c6020f4381835ba5c6294dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laser: {fileID: 3630158643211693574, guid: 73a309dbf0a80ab44bf7447d33ae01d7, type: 3}
-  laserSpeed: 5
-  laserLife: 2
 --- !u!1 &1971399443
 GameObject:
   m_ObjectHideFlags: 3
@@ -2178,10 +2158,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2039576025, guid: 05b5fe46b713ec24fb2650dbb4dce748, type: 3}
-      propertyPath: laserGun
-      value: 
-      objectReference: {fileID: 1853886587}
     - target: {fileID: 54901041874699798, guid: 05b5fe46b713ec24fb2650dbb4dce748, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -2230,14 +2206,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 786651344643199463, guid: 05b5fe46b713ec24fb2650dbb4dce748, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3423343183354081224, guid: 05b5fe46b713ec24fb2650dbb4dce748, type: 3}
-      propertyPath: m_Name
-      value: LaserGun
-      objectReference: {fileID: 0}
     - target: {fileID: 9116311557257065540, guid: 05b5fe46b713ec24fb2650dbb4dce748, type: 3}
       propertyPath: a
       value: 
@@ -2255,6 +2223,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1447115770, guid: 8957ef792ccf07b489416d65fe9d697f, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 8949570}
     - target: {fileID: 1073378561138539165, guid: 8957ef792ccf07b489416d65fe9d697f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2302,10 +2274,6 @@ PrefabInstance:
     - target: {fileID: 1073378561138539167, guid: 8957ef792ccf07b489416d65fe9d697f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073378561138539167, guid: 8957ef792ccf07b489416d65fe9d697f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8957ef792ccf07b489416d65fe9d697f, type: 3}
