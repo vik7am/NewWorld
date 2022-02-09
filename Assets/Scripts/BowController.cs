@@ -6,21 +6,22 @@ using UnityEngine.InputSystem;
 public class BowController : MonoBehaviour
 {
     [SerializeField]GameObject arrow;
-    GameObject currentArrow;
+    [SerializeField]float arrowSpeed = 5f;
+    [SerializeField]float arrowLife = 2f;
 
-    private void Start() {
-        
+    void OnFire(InputValue value){
+        FireArrow();
     }
 
-    public void OnFire(InputValue value){
-        currentArrow = Instantiate(arrow, transform.GetChild(0).position, Quaternion.identity);
-        StartCoroutine(DestroyArrow(currentArrow));
-    }
-
-    IEnumerator DestroyArrow(GameObject currentArrow)
+    void FireArrow()
     {
-        yield return new WaitForSecondsRealtime(2);
-        if(currentArrow != null)
-            Destroy(currentArrow);
+        Vector2 firePos = transform.GetChild(0).position;
+        Vector2 direction = transform.parent.parent.localScale;
+        GameObject currentArrow = Instantiate(arrow, firePos, Quaternion.identity);
+        currentArrow.transform.localScale = direction;
+        Rigidbody2D rb = currentArrow.GetComponent<Rigidbody2D>();
+        if(rb != null)
+            rb.velocity = transform.right * arrowSpeed * direction.x;
+        Destroy(currentArrow, arrowLife);
     }
 }

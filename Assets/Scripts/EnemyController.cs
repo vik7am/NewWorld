@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField]float speed = 1f;
-    Rigidbody2D enemyRigidbody2D;
     Pathfinder pathfinder;
+    LaserGunController laserGun;
     
     void Start()
     {
-        enemyRigidbody2D = GetComponent<Rigidbody2D>();
         pathfinder = GetComponent<Pathfinder>();
-    }
-
-    float GetSpeed(){
-        return speed;
+        laserGun = transform.GetComponentInChildren<LaserGunController>();   
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
+            laserGun.StartFire();
             if(pathfinder.IsIdle()){
                 pathfinder.CancelIdle();
                 }
@@ -29,9 +25,9 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player"){
+            laserGun.StopFire();
             pathfinder.followPlayer = false;
             pathfinder.SetIdle();
-
         }
     }
 }
