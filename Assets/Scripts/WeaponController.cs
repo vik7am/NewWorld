@@ -9,11 +9,11 @@ public class WeaponController : MonoBehaviour
     [SerializeField] GameObject bow;
     BowController bowController;
     GameObject myBow;
+    PlayerUIController player;
     bool isActive;
     void Start()
     {
-        // bowController = FindObjectOfType<BowController>();
-        // bowController.gameObject.SetActive(false);
+        player = transform.parent.GetComponent<PlayerUIController>();
     }
 
     void OnWeapon1(InputValue value){
@@ -21,8 +21,6 @@ public class WeaponController : MonoBehaviour
             myBow = Instantiate(bow, transform.position, Quaternion.identity, transform);
         else
             myBow.SetActive(!myBow.activeInHierarchy);
-        
-        // isActive = bowController.gameObject.activeInHierarchy;
-        // bowController.gameObject.SetActive(!isActive);
+        player.UpdateWeaponBar(myBow.activeInHierarchy);
     }
 }

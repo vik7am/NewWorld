@@ -74,7 +74,7 @@ public class Pathfinder : MonoBehaviour
     IEnumerator Scan()
     {
         isIdle = true;
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSeconds(2);
         isIdle = false;
         checkDirection();
         coroutine = null;

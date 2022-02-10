@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyUIController : MonoBehaviour
 {
-    [SerializeField]float HPDisplayTime;
+    [SerializeField]float HPDisplayTime = 3f;
     GameObject healthBar;
     Coroutine coroutine;
     bool showHealthBar;
@@ -28,9 +28,7 @@ public class EnemyUIController : MonoBehaviour
         while(showHealthBar){
             showHealthBar = false;
             healthBar.SetActive(true);
-            Debug.Log("ready for sleep");
-            yield return new WaitForSecondsRealtime(HPDisplayTime);
-            Debug.Log("awake");
+            yield return new WaitForSeconds(HPDisplayTime);
         }
             healthBar.SetActive(false);
             coroutine = null;
