@@ -10,6 +10,8 @@ public class PlayerUIController : MonoBehaviour
     [SerializeField]GameObject weaponBar;
     [SerializeField]GameObject inventory;
     [SerializeField]GameObject gameUI;
+    [SerializeField]Text text;
+    //int counter = 1;
     bool displayInventory;
 
     private void Start() {
@@ -35,5 +37,14 @@ public class PlayerUIController : MonoBehaviour
             Time.timeScale = 0;
         else
             Time.timeScale = 1;
+    }
+
+    /*void OnInteract(InputValue value){
+        counter++;
+        text.text = counter.ToString();
+    }*/
+
+    public void UpdateAmmunationCounter(int value){
+        text.text = value.ToString();
     }
 }
