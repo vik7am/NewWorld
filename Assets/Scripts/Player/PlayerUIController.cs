@@ -11,11 +11,15 @@ public class PlayerUIController : MonoBehaviour
     [SerializeField]GameObject inventory;
     [SerializeField]GameObject gameUI;
     [SerializeField]Text text;
-    //int counter = 1;
+    [SerializeField]Text collectableBar;
+    PlayerInventoryController inventoryController;
+    int collectableItemtype = 0;
+    bool isCollectable;
     bool displayInventory;
 
     private void Start() {
         weaponBar.SetActive(false);
+        inventoryController = GetComponent<PlayerInventoryController>();
     }
 
     public void UpdateHp(float hp){
@@ -33,16 +37,22 @@ public class PlayerUIController : MonoBehaviour
         gameUI.SetActive(displayInventory);
         displayInventory = !displayInventory;
         inventory.SetActive(displayInventory);
-        if(displayInventory)
+        if(displayInventory){
+            inventoryController.updateInventory();
             Time.timeScale = 0;
+        }
         else
             Time.timeScale = 1;
     }
 
-    /*void OnInteract(InputValue value){
-        counter++;
-        text.text = counter.ToString();
-    }*/
+    public void ShowCollectableInfo(string text){
+        collectableBar.transform.parent.gameObject.SetActive(true);
+        collectableBar.text = text;
+    }
+
+    public void HideCollectableInfo(){
+        collectableBar.transform.parent.gameObject.SetActive(false);
+    }
 
     public void UpdateAmmunationCounter(int value){
         text.text = value.ToString();
