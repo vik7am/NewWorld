@@ -9,21 +9,34 @@ public class WeaponController : MonoBehaviour
     [SerializeField] GameObject bow;
     BowController bowController;
     GameObject myBow;
-    PlayerUIController player;
+    bool bowEquipped;
+    //PlayerUIController player;
+    GameUIController gameUI;
+
     Animator animator;
     bool isActive;
-    void Start()
+    void Awake()
     {
-        player = transform.parent.GetComponent<PlayerUIController>();
+        gameUI = FindObjectOfType<GameUIController>();
         animator = transform.parent.GetComponent<Animator>();
     }
 
     void OnWeapon1(InputValue value){
-        if(myBow == null)
+        if(myBow == null){
             myBow = Instantiate(bow, transform.position, Quaternion.identity, transform);
-        else
-            myBow.SetActive(!myBow.activeInHierarchy);
-        player.UpdateWeaponBar(myBow.activeInHierarchy);
-        animator.SetBool("isFighting", myBow.activeInHierarchy);
+        }
+        if(bowEquipped){
+            bowEquipped = false;
+            gameUI.HideWeaponBar();
+            myBow.SetActive(false);
+            animator.SetBool("isFighting", false);
+        }
+        else{
+            bowEquipped = true;
+            gameUI.DisplayWeaponBar();
+            myBow.SetActive(true);
+            animator.SetBool("isFighting", true);
+        }
+        //animator.SetBool("isFighting", myBow.activeInHierarchy);
     }
 }

@@ -8,15 +8,20 @@ public class BowController : MonoBehaviour
     [SerializeField]GameObject arrow;
     [SerializeField]float arrowSpeed = 5f;
     [SerializeField]float arrowLife = 2f;
-    PlayerInventoryController inventory;
+    GameUIController gameUI;
+    InventoryController inventory;
 
-    private void Start() {
-        inventory = transform.parent.parent.GetComponent<PlayerInventoryController>();
+    void Awake() {
+        inventory = FindObjectOfType<InventoryController>();
+        gameUI = FindObjectOfType<GameUIController>();
     }
 
     void OnFire(InputValue value){
-        if(inventory.RemoveArrow(1))
+        if(inventory.RemoveArrow(1)){
             FireArrow();
+            gameUI.UpdateWeaponBar();
+        }
+            
     }
 
     void FireArrow()
