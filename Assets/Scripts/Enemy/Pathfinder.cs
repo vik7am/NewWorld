@@ -15,9 +15,12 @@ public class Pathfinder : MonoBehaviour
     Transform target;
     PlayerController player;
     Coroutine coroutine;
+    Animator animator;
 
     private void Start() {
         player = FindObjectOfType<PlayerController>();
+        animator = GetComponent<Animator>();
+        animator.SetBool("isWalking", true);
         isDirectionRight = true;
         target = b;
         checkDirection();
@@ -74,7 +77,9 @@ public class Pathfinder : MonoBehaviour
     IEnumerator Scan()
     {
         isIdle = true;
+        animator.SetBool("isWalking", false);
         yield return new WaitForSeconds(2);
+        animator.SetBool("isWalking", true);
         isIdle = false;
         checkDirection();
         coroutine = null;

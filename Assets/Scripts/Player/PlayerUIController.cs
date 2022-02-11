@@ -10,12 +10,14 @@ public class PlayerUIController : MonoBehaviour
     [SerializeField]GameObject weaponBar;
     [SerializeField]GameObject inventory;
     [SerializeField]GameObject gameUI;
+    [SerializeField]GameObject craftingUI;
     [SerializeField]Text text;
     [SerializeField]Text collectableBar;
     PlayerInventoryController inventoryController;
     int collectableItemtype = 0;
     bool isCollectable;
     bool displayInventory;
+    bool displayCrafting;
 
     private void Start() {
         weaponBar.SetActive(false);
@@ -38,11 +40,24 @@ public class PlayerUIController : MonoBehaviour
         displayInventory = !displayInventory;
         inventory.SetActive(displayInventory);
         if(displayInventory){
-            inventoryController.updateInventory();
+            inventoryController.UpdateInventory();
             Time.timeScale = 0;
         }
         else
             Time.timeScale = 1;
+    }
+
+    void OnCrafting(InputValue value){
+        gameUI.SetActive(displayCrafting);
+        displayCrafting = !displayCrafting;
+        craftingUI.SetActive(displayCrafting);
+        if(displayCrafting){
+            inventoryController.UpdateCraftingMenu();
+            Time.timeScale = 0;
+        }
+        else
+            Time.timeScale = 1;
+
     }
 
     public void ShowCollectableInfo(string text){
