@@ -9,8 +9,9 @@ public class PlayerInteractionController : MonoBehaviour
     PlayerUIController playerUI;
     InventoryController inventory;
     InventoryUIController inventoryUI;
-    GameObject item;
+    GameObject itemObject;
     bool isCollectable;
+    bool isKillable;
     int itemType;
     GameUIController gameUI;
 
@@ -21,13 +22,19 @@ public class PlayerInteractionController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        item = other.gameObject;
+        itemObject = other.gameObject;
         if(other.tag == "Item"){
             Collectablecontroller item = other.GetComponent<Collectablecontroller>();
             itemText = item.GetItemText();
             itemType = item.GetItemType();
             gameUI.DisplayCollectableBar(itemText);
             isCollectable = true;
+        }
+        else if(other.tag == "Enemy" && other.GetType() == typeof(CapsuleCollider2D)){
+            if(!itemObject.GetComponent<EnemyUIController>().IsHostile()){
+                gameUI.DisplayCollectableBar("Silent Strike");
+                isKillable = true;
+            }
         }
     }
 
@@ -37,15 +44,21 @@ public class PlayerInteractionController : MonoBehaviour
                 inventory.AddRidgeWoods(5);
             if(itemType == 2)
                 inventory.AddMetalShards(5);
-            Destroy(item);
+            Destroy(itemObject);
             inventoryUI.UpdateUI();
+        }
+        if(isKillable){
+            if(!itemObject.GetComponent<EnemyUIController>().IsHostile())
+                itemObject.GetComponent<Health>().ReduceHp(100f);
+                
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        gameUI.HideCollectableBar();
-        isCollectable = false;
-        item = null;
+            gameUI.HideCollectableBar();
+            isCollectable = false;
+            isKillable = false;
+            itemObject = null;
     }
 }
 

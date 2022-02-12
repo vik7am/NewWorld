@@ -6,28 +6,39 @@ public class EnemyController : MonoBehaviour
 {
     Pathfinder pathfinder;
     LaserGunController laserGun;
+    EnemyUIController enemyUI;
+    Animator animator;
+
+    private void Awake() {
+        pathfinder = GetComponent<Pathfinder>();
+        laserGun = transform.GetComponentInChildren<LaserGunController>();
+        enemyUI = GetComponent<EnemyUIController>();
+        animator = GetComponent<Animator>();
+    }
     
     void Start()
     {
-        pathfinder = GetComponent<Pathfinder>();
-        laserGun = transform.GetComponentInChildren<LaserGunController>();   
+        
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Player"){
+        if(other.tag == "Player" && other.GetType() == typeof(CapsuleCollider2D)){
             laserGun.StartFire();
             if(pathfinder.IsIdle()){
+                //animator.SetBool("isWalking", true);
                 pathfinder.CancelIdle();
                 }
             pathfinder.followPlayer = true;
+            enemyUI.SetStatusBar("Hostile");
         }
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        if(other.tag == "Player"){
+        if(other.tag == "Player" && other.GetType() == typeof(CapsuleCollider2D)){
             laserGun.StopFire();
             pathfinder.followPlayer = false;
             pathfinder.SetIdle();
+            
         }
     }
 }

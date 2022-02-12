@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerUIController : MonoBehaviour
-{
+{/*
     [SerializeField]Slider healthBar;
     [SerializeField]GameObject weaponBar;
     [SerializeField]GameObject inventory;
@@ -72,4 +72,5 @@ public class PlayerUIController : MonoBehaviour
     public void UpdateAmmunationCounter(int value){
         text.text = value.ToString();
     }
+    */
 }

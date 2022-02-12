@@ -8,7 +8,7 @@ public class DeathboxController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
-            PlayerInventoryController inventory = other.GetComponent<PlayerInventoryController>();
+            InventoryController inventory = other.GetComponent<InventoryController>();
             inventory.AddMetalShards(metalShards);
             Destroy(gameObject);
         }

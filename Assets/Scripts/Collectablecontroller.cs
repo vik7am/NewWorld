@@ -7,7 +7,7 @@ public class Collectablecontroller : MonoBehaviour
 {
     [SerializeField]bool isridgeWood;
     [SerializeField]bool ismetalShard;
-    int size = 5;
+    //int size = 5;
 
     public string GetItemText(){
         if(isridgeWood)

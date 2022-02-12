@@ -8,8 +8,6 @@ public class InventoryController : MonoBehaviour
     int arrow = 5;
     int metalShards = 1;
     int ridgeWood = 2;
-    [SerializeField]GameObject inventoryUI;
-    [SerializeField]GameObject WeaponBar;
 
     public int getArrow(){
         return arrow;

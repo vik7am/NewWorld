@@ -6,20 +6,25 @@ using UnityEngine;
 public class Pathfinder : MonoBehaviour
 {
     [SerializeField]float speed = 2f;
-    [SerializeField]Transform a;
-    [SerializeField]Transform b;
+    Vector2 a, b, target;
+    //Transform a, b;
+    //Transform b;
     bool isFirstTarget;
     bool isIdle;
     public bool followPlayer;
     bool isDirectionRight;
-    Transform target;
+    //Transform target;
     PlayerController player;
     Coroutine coroutine;
     Animator animator;
+    EnemyUIController enemyUI;
 
     private void Awake() {
         player = FindObjectOfType<PlayerController>();
+        enemyUI = GetComponent<EnemyUIController>();
         animator = GetComponent<Animator>();
+        a = transform.GetChild(3).GetChild(0).position;
+        b = transform.GetChild(3).GetChild(1).position;
     }
 
     private void Start() {
@@ -56,7 +61,7 @@ public class Pathfinder : MonoBehaviour
     }
 
     public void checkDirection(){
-        if(transform.position.x < target.position.x)
+        if(transform.position.x < target.x)
             ChangeDirection(true);
         else
             ChangeDirection(false);
@@ -67,8 +72,8 @@ public class Pathfinder : MonoBehaviour
         if(followPlayer)
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
         else
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), speed * Time.deltaTime);
-        if(transform.position == target.position){
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.x, transform.position.y), speed * Time.deltaTime);
+        if((Vector2)transform.position == target){
             SwitchTarget();
             SetIdle();
         }
@@ -81,16 +86,20 @@ public class Pathfinder : MonoBehaviour
     public void CancelIdle(){
         StopCoroutine(coroutine);
         isIdle = false;
+        animator.SetBool("isWalking", true);
+        enemyUI.SetStatusBar("Hostile");
         coroutine = null;
     }
 
     IEnumerator Scan()
     {
         isIdle = true;
+        enemyUI.SetStatusBar("Idle");
         animator.SetBool("isWalking", false);
         yield return new WaitForSeconds(2);
         animator.SetBool("isWalking", true);
         isIdle = false;
+        enemyUI.SetStatusBar("Normal");
         checkDirection();
         coroutine = null;
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerInventoryController : MonoBehaviour
-{
+{/**
     PlayerUIController player;
     [SerializeField]GameObject mainInventory;
     [SerializeField]GameObject craftingMenu;
@@ -74,7 +74,7 @@ public class PlayerInventoryController : MonoBehaviour
     }
 
     void updateUI(){
-        player.UpdateAmmunationCounter(arrow);
+        //player.UpdateAmmunationCounter(arrow);
     }
 
     public void UpdateInventory(){
@@ -83,6 +83,6 @@ public class PlayerInventoryController : MonoBehaviour
         mainInventory.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = metalShards.ToString();
     }
         
-    
+    */
 
 }

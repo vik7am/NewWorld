@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     Rigidbody2D myrigidbody;
     Animator animator;
-    bool isMovingForward = true;
+    //bool isMovingForward = true;
 
     void Awake()
     {
