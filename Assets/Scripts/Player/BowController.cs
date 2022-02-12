@@ -27,12 +27,12 @@ public class BowController : MonoBehaviour
     void FireArrow()
     {
         Vector2 firePos = transform.GetChild(0).position;
-        Vector2 direction = transform.parent.parent.localScale;
-        GameObject currentArrow = Instantiate(arrow, firePos, Quaternion.identity);
-        currentArrow.transform.localScale = direction;
+        //Vector2 direction = transform.parent.parent.localScale;
+        GameObject currentArrow = Instantiate(arrow, firePos, transform.rotation);
+        //currentArrow.transform.localScale = direction;
         Rigidbody2D rb = currentArrow.GetComponent<Rigidbody2D>();
         if(rb != null)
-            rb.velocity = transform.right * arrowSpeed * direction.x;
+            rb.velocity = transform.right * arrowSpeed /*** direction.x**/;
         Destroy(currentArrow, arrowLife);
     }
 }

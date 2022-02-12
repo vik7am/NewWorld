@@ -23,7 +23,7 @@ public class WeaponController : MonoBehaviour
 
     void OnWeapon1(InputValue value){
         if(myBow == null){
-            myBow = Instantiate(bow, transform.position, Quaternion.identity, transform);
+            myBow = Instantiate(bow, transform.position, transform.rotation, transform);
         }
         if(bowEquipped){
             bowEquipped = false;

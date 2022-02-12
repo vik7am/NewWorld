@@ -7,16 +7,17 @@ public class Health : MonoBehaviour
     [SerializeField]float hp = 100f;
     [SerializeField]bool isPlayer;
     [SerializeField]GameObject deathbox;
-    PlayerUIController playerUI;
+    GameUIController gameUI;
     EnemyUIController enemyUI;
-
     float MaxHP;
 
+    private void Awake() {
+        gameUI = FindObjectOfType<GameUIController>();
+        enemyUI = GetComponent<EnemyUIController>();
+    }
 
     private void Start() {
         MaxHP = hp;
-        playerUI = GetComponent<PlayerUIController>();
-        enemyUI = GetComponent<EnemyUIController>();
     }
 
     public float GetHp(){
@@ -26,7 +27,7 @@ public class Health : MonoBehaviour
     public void ReduceHp(float value){
         hp -= value;
         if(isPlayer)
-            playerUI.UpdateHp(hp);
+            gameUI.UpdateHealthBar(hp);
         else
             enemyUI.UpdateHp(hp, MaxHP);
         if(hp <= 0){
@@ -34,7 +35,6 @@ public class Health : MonoBehaviour
             if(!isPlayer){
                 Instantiate(deathbox, transform.position, Quaternion.identity);
             }
-            
         }
             
     }

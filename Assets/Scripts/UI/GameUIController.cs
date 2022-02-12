@@ -24,6 +24,10 @@ public class GameUIController : MonoBehaviour
         transform.GetChild(2).gameObject.SetActive(false);
     }
 
+    public void UpdateHealthBar(float value){
+        transform.GetChild(0).GetComponent<Slider>().value = value;
+    }
+
     public void UpdateWeaponBar(){
         transform.GetChild(1).GetChild(2).GetComponent<Text>().text = inventory.getArrow().ToString();
     }

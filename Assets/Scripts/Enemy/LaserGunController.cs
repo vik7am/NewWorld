@@ -33,12 +33,12 @@ public class LaserGunController : MonoBehaviour
     void FireLaserBeam()
     {
         Vector2 firePos = transform.position;
-        Vector2 direction = transform.parent.localScale;
-        GameObject currentLaser = Instantiate(laser, firePos, Quaternion.identity);
-        currentLaser.transform.localScale = direction;
+        //Vector2 direction = transform.parent.localScale;
+        GameObject currentLaser = Instantiate(laser, firePos, transform.rotation);
+        //currentLaser.transform.localScale = direction;
         Rigidbody2D rb = currentLaser.GetComponent<Rigidbody2D>();
         if(rb != null)
-            rb.velocity = transform.right * laserSpeed * direction.x;
+            rb.velocity = transform.right * laserSpeed  /* * direction.x**/;
         Destroy(currentLaser, laserLife);
     }
 }

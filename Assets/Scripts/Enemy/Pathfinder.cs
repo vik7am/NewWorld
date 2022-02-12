@@ -17,9 +17,12 @@ public class Pathfinder : MonoBehaviour
     Coroutine coroutine;
     Animator animator;
 
-    private void Start() {
+    private void Awake() {
         player = FindObjectOfType<PlayerController>();
         animator = GetComponent<Animator>();
+    }
+
+    private void Start() {
         animator.SetBool("isWalking", true);
         isDirectionRight = true;
         target = b;
@@ -40,9 +43,16 @@ public class Pathfinder : MonoBehaviour
     }
 
     void ChangeDirection(bool isRight){
-        if(isDirectionRight != isRight)
-            transform.localScale = new Vector2(transform.localScale.x * -1f, 1f);
+        if(isDirectionRight == isRight)
+            return;
+        if(isRight)
+            transform.rotation = Quaternion.identity;
+        else
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         isDirectionRight = isRight;
+        /**if(isDirectionRight != isRight)
+            transform.localScale = new Vector2(transform.localScale.x * -1f, 1f);
+        isDirectionRight = isRight;*/
     }
 
     public void checkDirection(){
