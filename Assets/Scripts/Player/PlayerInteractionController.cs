@@ -9,6 +9,7 @@ public class PlayerInteractionController : MonoBehaviour
     PlayerUIController playerUI;
     InventoryController inventory;
     InventoryUIController inventoryUI;
+    PlayerHealth health;
     GameObject itemObject;
     bool isCollectable;
     bool isKillable;
@@ -19,6 +20,7 @@ public class PlayerInteractionController : MonoBehaviour
         inventory = FindObjectOfType<InventoryController>();
         inventoryUI = FindObjectOfType<InventoryUIController>();
         gameUI = FindObjectOfType<GameUIController>();
+        health = FindObjectOfType<PlayerHealth>();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -44,12 +46,15 @@ public class PlayerInteractionController : MonoBehaviour
                 inventory.AddRidgeWoods(5);
             if(itemType == 2)
                 inventory.AddMetalShards(5);
+            if(itemType == 3)
+                if(!health.FillMedicinePouch(20))
+                    return;
             Destroy(itemObject);
             inventoryUI.UpdateUI();
         }
         if(isKillable){
             if(!itemObject.GetComponent<EnemyUIController>().IsHostile())
-                itemObject.GetComponent<Health>().ReduceHp(100f);
+                itemObject.GetComponent<EnemyHealth>().ReduceHp(100f);
                 
         }
     }

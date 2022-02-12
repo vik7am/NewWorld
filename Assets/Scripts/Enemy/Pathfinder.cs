@@ -69,6 +69,8 @@ public class Pathfinder : MonoBehaviour
 
     void Move()
     {
+        if(player == null)
+            followPlayer = false;
         if(followPlayer)
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
         else

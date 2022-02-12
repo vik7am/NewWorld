@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
-    /*
     [SerializeField]float hp = 100f;
-    [SerializeField]bool isPlayer;
+    //[SerializeField]bool isPlayer;
     [SerializeField]GameObject deathbox;
     GameUIController gameUI;
     EnemyUIController enemyUI;
@@ -27,16 +26,16 @@ public class Health : MonoBehaviour
 
     public void ReduceHp(float value){
         hp -= value;
-        if(isPlayer)
-            gameUI.UpdateHealthBar(hp);
-        else
+        //if(isPlayer)
+        //    gameUI.UpdateHealthBar(hp);
+        //else
             enemyUI.UpdateHp(hp, MaxHP);
         if(hp <= 0){
             Destroy(gameObject);
-            if(!isPlayer){
+            //if(!isPlayer){
                 Instantiate(deathbox, transform.position, Quaternion.identity);
-            }
+            //}
         }
             
-    }*/
+    }
 }

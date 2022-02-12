@@ -11,12 +11,14 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     Rigidbody2D myrigidbody;
     Animator animator;
-    //bool isMovingForward = true;
+    GameUIController gameUI;
+    bool hidden;
 
     void Awake()
     {
         myrigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        gameUI = FindObjectOfType<GameUIController>();
     }
 
     void FixedUpdate()
@@ -49,19 +51,25 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isWalking", isMoving);
         if(isMoving)
             transform.rotation = myrigidbody.velocity.x > 0 ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
-        /*
-        if(isMoving){
-            if( moveInput.x == 1 && isMovingForward || moveInput.x == -1 && !isMovingForward)
-                return;
-            else{
-                transform.Rotate(0, 180, 0);
-                isMovingForward = !isMovingForward;
-            }
-        }**/
-        
-        /*if(isMoving)
-            transform.localScale = new Vector2(Mathf.Sign(myrigidbody.velocity.x), 1f);*/
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D other) {  
+        if(other.tag == "Grass"){
+            //Debug.Log("Hidden");
+            gameUI.PlayerVisibility(false);
+            hidden = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.tag == "Grass"){
+            //Debug.Log("Visible");
+            gameUI.PlayerVisibility(true);
+            hidden = false;
+        }
+    }
+
+    public bool IsHidden(){
+        return hidden;
+    }
 }

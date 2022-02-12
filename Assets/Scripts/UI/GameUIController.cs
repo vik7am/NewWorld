@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GameUIController : MonoBehaviour
 {
-    //bool weaponBarActive;
     InventoryController inventory;
 
     private void Awake() {
@@ -22,10 +21,27 @@ public class GameUIController : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(false);
+        transform.GetChild(3).GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
+    }
+
+    public void PlayerVisibility(bool value){
+        if(value){
+            transform.GetChild(3).GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
+        }
+        else{
+            transform.GetChild(3).GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
+        }
     }
 
     public void UpdateHealthBar(float value){
         transform.GetChild(0).GetComponent<Slider>().value = value;
+    }
+
+    public void UpdateMedicineBar(float value){
+        transform.GetChild(4).GetComponent<Slider>().value = value;
     }
 
     public void UpdateWeaponBar(){

@@ -23,6 +23,8 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player" && other.GetType() == typeof(CapsuleCollider2D)){
+            if(other.GetComponent<PlayerController>().IsHidden())
+                return;
             laserGun.StartFire();
             if(pathfinder.IsIdle()){
                 //animator.SetBool("isWalking", true);
@@ -35,6 +37,8 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player" && other.GetType() == typeof(CapsuleCollider2D)){
+            if(other.GetComponent<PlayerController>().IsHidden())
+                return;
             laserGun.StopFire();
             pathfinder.followPlayer = false;
             pathfinder.SetIdle();

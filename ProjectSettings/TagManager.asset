@@ -8,6 +8,7 @@ TagManager:
   - Arrow
   - Laser
   - Item
+  - Grass
   layers:
   - Default
   - TransparentFX
@@ -15,10 +16,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Ground
+  - Grass
   - 
   - 
   - 
