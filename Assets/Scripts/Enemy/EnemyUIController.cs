@@ -43,6 +43,9 @@ public class EnemyUIController : MonoBehaviour
 
     public void SetStatusBar(string status){
         hostile = status == "Hostile";
+        if(hostile)
+            transform.GetChild(4).GetComponent<EnemyAudio>().PlayHostile();
+            //transform.GetChild(2).GetComponent<AudioSource>().Play();
         if(status == "Normal")
             statusBar.color = new Color(0, 255, 0, 1);
         else if (status == "Idle")

@@ -8,6 +8,17 @@ public class InventoryController : MonoBehaviour
     int arrow = 5;
     int metalShards = 1;
     int ridgeWood = 2;
+    [SerializeField]AudioClip ridgeWoodClip;
+    [SerializeField]AudioClip metalShardClip;
+    [SerializeField]AudioClip medicinePlantClip;
+    [SerializeField]AudioClip arrowClip;
+    PlayerAudio playerAudio;
+    AudioSource audioSource;
+
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+        playerAudio = FindObjectOfType<PlayerAudio>();
+    }
 
     public int getArrow(){
         return arrow;
@@ -22,15 +33,26 @@ public class InventoryController : MonoBehaviour
     }
 
     public void AddArrow(int value){
+        playerAudio.PlayArrowCrafting();
+        //audioSource.PlayOneShot(arrowClip, 1f);
         arrow += value;
     }
 
     public void AddMetalShards(int value){
+        playerAudio.PlayMetalShard();
+        //audioSource.PlayOneShot(metalShardClip, 1f);
         metalShards += value;
     }
 
     public void AddRidgeWoods(int value){
+        playerAudio.PlayRidgeWood();
+        //audioSource.PlayOneShot(ridgeWoodClip, 1f);
         ridgeWood += value;
+    }
+
+    public void PlayMedicinePlantClip(){
+        playerAudio.PlayMedicinalPlant();
+        //audioSource.PlayOneShot(medicinePlantClip, 1f);
     }
 
     public bool RemoveArrow(int value){

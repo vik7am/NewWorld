@@ -5,15 +5,17 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField]float hp = 100f;
-    //[SerializeField]bool isPlayer;
     [SerializeField]GameObject deathbox;
     GameUIController gameUI;
     EnemyUIController enemyUI;
+    [SerializeField]AudioClip audioClip;
+    //EnemyAudio enemyAudio;
     float MaxHP;
 
     private void Awake() {
         gameUI = FindObjectOfType<GameUIController>();
         enemyUI = GetComponent<EnemyUIController>();
+        //enemyAudio = transform.GetChild(4).GetComponent<EnemyAudio>();
     }
 
     private void Start() {
@@ -26,16 +28,14 @@ public class EnemyHealth : MonoBehaviour
 
     public void ReduceHp(float value){
         hp -= value;
-        //if(isPlayer)
-        //    gameUI.UpdateHealthBar(hp);
-        //else
             enemyUI.UpdateHp(hp, MaxHP);
         if(hp <= 0){
             Destroy(gameObject);
-            //if(!isPlayer){
-                Instantiate(deathbox, transform.position, Quaternion.identity);
-            //}
+            Instantiate(deathbox, transform.position, Quaternion.identity);
         }
+        else
+            transform.GetChild(4).GetComponent<EnemyAudio>().PlayArrowHit();
+            //transform.GetChild(3).GetComponent<AudioSource>().PlayOneShot(audioClip, 1f);
             
     }
 }

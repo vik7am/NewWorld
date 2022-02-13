@@ -8,6 +8,7 @@ public class LaserGunController : MonoBehaviour
     [SerializeField]float laserSpeed = 5f;
     [SerializeField]float laserLife = 2f;
     Coroutine coroutine;
+    [SerializeField]AudioClip audioClip;
     bool fire;
 
     public void StartFire(){
@@ -33,12 +34,12 @@ public class LaserGunController : MonoBehaviour
     void FireLaserBeam()
     {
         Vector2 firePos = transform.position;
-        //Vector2 direction = transform.parent.localScale;
+        transform.parent.GetChild(4).GetComponent<EnemyAudio>().PlayLaser();
+        //GetComponent<AudioSource>().Play();
         GameObject currentLaser = Instantiate(laser, firePos, transform.rotation);
-        //currentLaser.transform.localScale = direction;
         Rigidbody2D rb = currentLaser.GetComponent<Rigidbody2D>();
         if(rb != null)
-            rb.velocity = transform.right * laserSpeed  /* * direction.x**/;
+            rb.velocity = transform.right * laserSpeed;
         Destroy(currentLaser, laserLife);
     }
 }

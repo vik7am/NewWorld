@@ -18,11 +18,14 @@ public class Pathfinder : MonoBehaviour
     Coroutine coroutine;
     Animator animator;
     EnemyUIController enemyUI;
+    bool walkAudio;
+    AudioSource audioSource;
 
     private void Awake() {
         player = FindObjectOfType<PlayerController>();
         enemyUI = GetComponent<EnemyUIController>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         a = transform.GetChild(3).GetChild(0).position;
         b = transform.GetChild(3).GetChild(1).position;
     }
@@ -89,6 +92,7 @@ public class Pathfinder : MonoBehaviour
         StopCoroutine(coroutine);
         isIdle = false;
         animator.SetBool("isWalking", true);
+        CheckWalkAudio(true);
         enemyUI.SetStatusBar("Hostile");
         coroutine = null;
     }
@@ -98,8 +102,10 @@ public class Pathfinder : MonoBehaviour
         isIdle = true;
         enemyUI.SetStatusBar("Idle");
         animator.SetBool("isWalking", false);
+        CheckWalkAudio(false);
         yield return new WaitForSeconds(2);
         animator.SetBool("isWalking", true);
+        CheckWalkAudio(true);
         isIdle = false;
         enemyUI.SetStatusBar("Normal");
         checkDirection();
@@ -111,5 +117,15 @@ public class Pathfinder : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    void CheckWalkAudio(bool value){
+        if(walkAudio == value)
+            return;
+        walkAudio = value;
+        if(walkAudio)
+            transform.GetChild(4).GetComponent<EnemyAudio>().PlayWalingAudio(true);
+        else
+            transform.GetChild(4).GetComponent<EnemyAudio>().PlayWalingAudio(false);
     }
 }

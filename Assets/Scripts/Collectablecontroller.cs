@@ -8,7 +8,11 @@ public class Collectablecontroller : MonoBehaviour
     [SerializeField]bool isridgeWood;
     [SerializeField]bool ismetalShard;
     [SerializeField]bool ismedicinePlant;
-    //int size = 5;
+
+    private void Start() {
+        if(ismetalShard)
+            GetComponent<AudioSource>().Play();
+    }
 
     public string GetItemText(){
         if(isridgeWood)
