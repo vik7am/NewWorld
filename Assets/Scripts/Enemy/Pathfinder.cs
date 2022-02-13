@@ -7,25 +7,20 @@ public class Pathfinder : MonoBehaviour
 {
     [SerializeField]float speed = 2f;
     Vector2 a, b, target;
-    //Transform a, b;
-    //Transform b;
     bool isFirstTarget;
     bool isIdle;
     public bool followPlayer;
     bool isDirectionRight;
-    //Transform target;
     PlayerController player;
     Coroutine coroutine;
     Animator animator;
     EnemyUIController enemyUI;
     bool walkAudio;
-    AudioSource audioSource;
 
     private void Awake() {
         player = FindObjectOfType<PlayerController>();
         enemyUI = GetComponent<EnemyUIController>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
         a = transform.GetChild(3).GetChild(0).position;
         b = transform.GetChild(3).GetChild(1).position;
     }
@@ -58,9 +53,6 @@ public class Pathfinder : MonoBehaviour
         else
             transform.rotation = Quaternion.Euler(0, 180, 0);
         isDirectionRight = isRight;
-        /**if(isDirectionRight != isRight)
-            transform.localScale = new Vector2(transform.localScale.x * -1f, 1f);
-        isDirectionRight = isRight;*/
     }
 
     public void checkDirection(){

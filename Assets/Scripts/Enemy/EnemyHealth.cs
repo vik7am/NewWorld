@@ -8,14 +8,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]GameObject deathbox;
     GameUIController gameUI;
     EnemyUIController enemyUI;
-    [SerializeField]AudioClip audioClip;
-    //EnemyAudio enemyAudio;
     float MaxHP;
 
     private void Awake() {
         gameUI = FindObjectOfType<GameUIController>();
         enemyUI = GetComponent<EnemyUIController>();
-        //enemyAudio = transform.GetChild(4).GetComponent<EnemyAudio>();
     }
 
     private void Start() {
@@ -35,7 +32,5 @@ public class EnemyHealth : MonoBehaviour
         }
         else
             transform.GetChild(4).GetComponent<EnemyAudio>().PlayArrowHit();
-            //transform.GetChild(3).GetComponent<AudioSource>().PlayOneShot(audioClip, 1f);
-            
     }
 }

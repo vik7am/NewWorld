@@ -15,11 +15,6 @@ public class EnemyController : MonoBehaviour
         enemyUI = GetComponent<EnemyUIController>();
         animator = GetComponent<Animator>();
     }
-    
-    void Start()
-    {
-        
-    }
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player" && other.GetType() == typeof(CapsuleCollider2D)){
@@ -27,7 +22,6 @@ public class EnemyController : MonoBehaviour
                 return;
             laserGun.StartFire();
             if(pathfinder.IsIdle()){
-                //animator.SetBool("isWalking", true);
                 pathfinder.CancelIdle();
                 }
             pathfinder.followPlayer = true;

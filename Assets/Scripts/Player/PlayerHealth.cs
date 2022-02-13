@@ -25,7 +25,6 @@ public class PlayerHealth : MonoBehaviour
         Mathf.Clamp(medicinePouch, 0f, 100f);
         gameUI.UpdateMedicineBar(medicinePouch);
         FindObjectOfType<PlayerAudio>().PlayMedicinalPlant();
-        //transform.GetChild(1).GetComponent<InventoryController>().PlayMedicinePlantClip();
         return true;
     }
 

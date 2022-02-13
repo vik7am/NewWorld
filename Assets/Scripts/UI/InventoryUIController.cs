@@ -17,12 +17,6 @@ public class InventoryUIController : MonoBehaviour
         UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdateUI(){
         transform.GetChild(0).GetChild(0).GetComponent<Text>().text = inventory.getArrow().ToString();
         transform.GetChild(1).GetChild(0).GetComponent<Text>().text = inventory.GetRidgeWood().ToString();

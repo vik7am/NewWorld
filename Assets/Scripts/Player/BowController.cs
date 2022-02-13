@@ -20,19 +20,16 @@ public class BowController : MonoBehaviour
         if(inventory.RemoveArrow(1)){
             FireArrow();
             gameUI.UpdateWeaponBar();
-        }
-            
+        }     
     }
 
     void FireArrow()
     {
         Vector2 firePos = transform.GetChild(0).position;
-        //Vector2 direction = transform.parent.parent.localScale;
         GameObject currentArrow = Instantiate(arrow, firePos, transform.rotation);
-        //currentArrow.transform.localScale = direction;
         Rigidbody2D rb = currentArrow.GetComponent<Rigidbody2D>();
         if(rb != null)
-            rb.velocity = transform.right * arrowSpeed /*** direction.x**/;
+            rb.velocity = transform.right * arrowSpeed;
         Destroy(currentArrow, arrowLife);
     }
 }

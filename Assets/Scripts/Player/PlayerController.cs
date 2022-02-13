@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float runSpeed = 2.5f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField]LayerMask groundLayer;
-
     Vector2 moveInput;
     Rigidbody2D myrigidbody;
     Animator animator;
@@ -79,7 +78,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {  
         if(other.tag == "Grass"){
-            //Debug.Log("Hidden");
             gameUI.PlayerVisibility(false);
             hidden = true;
         }
@@ -87,7 +85,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Grass"){
-            //Debug.Log("Visible");
             gameUI.PlayerVisibility(true);
             hidden = false;
         }

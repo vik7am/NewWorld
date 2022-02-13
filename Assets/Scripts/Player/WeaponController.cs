@@ -10,7 +10,6 @@ public class WeaponController : MonoBehaviour
     BowController bowController;
     GameObject myBow;
     bool bowEquipped;
-    //PlayerUIController player;
     GameUIController gameUI;
 
     Animator animator;
@@ -37,6 +36,5 @@ public class WeaponController : MonoBehaviour
             myBow.SetActive(true);
             animator.SetBool("isFighting", true);
         }
-        //animator.SetBool("isFighting", myBow.activeInHierarchy);
     }
 }

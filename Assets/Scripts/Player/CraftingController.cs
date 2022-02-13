@@ -9,7 +9,6 @@ public class CraftingController : MonoBehaviour
     InventoryController inventory;
     CraftingUIController craftingUI;
     
-
     void Awake()
     {
         inventory = FindObjectOfType<InventoryController>();
@@ -17,6 +16,8 @@ public class CraftingController : MonoBehaviour
     }
 
     void OnCraft(InputValue value){
+        if(craftingUI.gameObject.activeInHierarchy == false)
+            return;
         if(inventory.GetRidgeWood() >=2 && inventory.GetMetalShards() >=1){
             inventory.RemoveMetalShards(1);
             inventory.RemoveRidgeWoods(2);

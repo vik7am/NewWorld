@@ -10,7 +10,6 @@ public class PlayerAudio : MonoBehaviour
     AudioSource medicinePlantAudio;
     AudioSource arrowCraftingAudio;
     
-
     void Awake()
     {
         walkingAudio = transform.GetChild(0).GetComponent<AudioSource>();
