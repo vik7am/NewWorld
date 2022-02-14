@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 1974559813861981140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 418614112}
   m_Father: {fileID: 0}
@@ -158,3 +158,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 2548366794053982583, guid: 52a3891d92eccd24eb4be2334a57e583, type: 3}
+  arrowSpeed: 5
+  arrowLife: 2

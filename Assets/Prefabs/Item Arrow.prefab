@@ -122,3 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df12a1f1fd5a5b47a4e2622c12c5636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isridgeWood: 0
+  ismetalShard: 0
+  ismedicinePlant: 0
