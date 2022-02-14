@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Pathfinder : MonoBehaviour
 {
-    [SerializeField]float speed = 2f;
+    /*[SerializeField]float speed = 2f;
     Vector2 a, b, target;
     bool isFirstTarget;
     bool isIdle;
@@ -119,5 +119,5 @@ public class Pathfinder : MonoBehaviour
             transform.GetChild(4).GetComponent<EnemyAudio>().PlayWalingAudio(true);
         else
             transform.GetChild(4).GetComponent<EnemyAudio>().PlayWalingAudio(false);
-    }
+    }*/
 }

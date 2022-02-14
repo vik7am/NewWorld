@@ -23,9 +23,10 @@ public class LaserGunController : MonoBehaviour
 
     IEnumerator FireLaser()
     {
+        yield return new WaitForSeconds(1);
         while(fire){
-            yield return new WaitForSeconds(1);
             FireLaserBeam();
+            yield return new WaitForSeconds(1);
         }
         coroutine = null;
     }
