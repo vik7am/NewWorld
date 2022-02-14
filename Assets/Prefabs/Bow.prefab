@@ -158,5 +158,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 2548366794053982583, guid: 52a3891d92eccd24eb4be2334a57e583, type: 3}
-  arrowSpeed: 5
+  arrowSpeed: 10
   arrowLife: 2

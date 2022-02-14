@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     Transform groundCheck;
     AudioSource audioSource;
     PlayerAudio playerAudio;
+    CapsuleCollider2D feet;
+    bool playerDown;
     bool walkAudio = true;
     bool hidden;
     bool isGrounded;
@@ -27,12 +30,23 @@ public class PlayerController : MonoBehaviour
         groundCheck = transform.GetChild(3);
         audioSource = GetComponent<AudioSource>();
         playerAudio = FindObjectOfType<PlayerAudio>();
+        feet = GetComponent<CapsuleCollider2D>();
+        
     }
 
     void Update()
     {
+        if(playerDown)
+            return;
         Run();
         ChangeDirection();
+        CheckLave();
+    }
+
+    private void CheckLave()
+    {
+        if(feet.IsTouchingLayers(LayerMask.GetMask("Lava")))
+            GetComponent<PlayerHealth>().ReduceHealth(100);
     }
 
     void OnMove(InputValue value){
@@ -40,8 +54,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnJump(InputValue value){
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        if(value.isPressed && isGrounded){
+        if(playerDown)
+            return;
+        if(!feet.IsTouchingLayers(LayerMask.GetMask("Ground", "Water", "Lava")))
+            return;
+        //isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        if(value.isPressed){
             myrigidbody.velocity += new Vector2(0f, jumpSpeed);
         }
     }
@@ -92,5 +110,9 @@ public class PlayerController : MonoBehaviour
 
     public bool IsHidden(){
         return hidden;
+    }
+
+    public void PlayerDown(){
+        playerDown = true;
     }
 }

@@ -69,6 +69,7 @@ public class EnemyController : MonoBehaviour
                 else{
                     hostile = true;
                     StartCoroutine(StartRaycast());
+                    enemyUI.SetStatusBar("Hostile");
                 }
             }
         }
@@ -88,8 +89,9 @@ public class EnemyController : MonoBehaviour
             RaycastHit2D hitinfo = Physics2D.Raycast(transform.position, transform.right, detectionRange, layerMask);
             if(hitinfo){
                 currentRescanCounter = rescanCounter;
+                if(enemyIdling)
+                    enemyUI.SetStatusBar("Hostile");
                 enemyIdling = false;
-                enemyUI.SetStatusBar("Hostile");
                 laserGun.StartFire();
             }
             else if(currentRescanCounter > 0){

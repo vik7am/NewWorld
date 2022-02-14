@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,9 +10,11 @@ public class PlayerHealth : MonoBehaviour
     float medicinePouch = 0f;
     float health;
     GameUIController gameUI;
+    Animator animator;
 
     private void Awake() {
         gameUI = FindObjectOfType<GameUIController>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start() {
@@ -51,9 +54,22 @@ public class PlayerHealth : MonoBehaviour
 
     public void ReduceHealth(float value){
         health -= value;
-            gameUI.UpdateHealthBar(health);
+        Mathf.Clamp(health, 0f, 100f);
+        gameUI.UpdateHealthBar(health);
         if(health <= 0){
-            Destroy(gameObject);
+            PlayerDead();
+            
+            //Destroy(gameObject, 3f);
         }
+    }
+
+    public void PlayerDead(){
+        animator.SetBool("isDown", true);
+        GetComponent<PlayerController>().PlayerDown();
+        Invoke("RestartGame", 3f);
+    }
+
+    void RestartGame(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
