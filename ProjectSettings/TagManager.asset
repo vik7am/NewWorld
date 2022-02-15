@@ -9,6 +9,8 @@ TagManager:
   - Laser
   - Item
   - Grass
+  - Ground
+  - Platform
   layers:
   - Default
   - TransparentFX

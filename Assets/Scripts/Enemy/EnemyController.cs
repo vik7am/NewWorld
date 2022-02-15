@@ -15,10 +15,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField]int rescanCounter = 3;
     Vector2 locationA, locationB, targetLocation, playerLocation;
     PlayerController player;
-    public bool hostile;
+    bool hostile;
     bool cooldown;
     bool followA;
     bool enemyIdling;
+    bool walkAudio;
     bool isDirectionRight;
 
     private void Awake() {
@@ -33,7 +34,8 @@ public class EnemyController : MonoBehaviour
     private void Start() {
         isDirectionRight = true;
         targetLocation = locationB;
-        StartCoroutine(StartRaycast());
+        animator.SetBool("isWalking", true);
+        CheckWalkAudio(true);
     }
 
     private void Update() {
@@ -45,7 +47,11 @@ public class EnemyController : MonoBehaviour
         if(enemyIdling)
             return;
         if(hostile){
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
+            if(transform.position.x == playerPos.x){
+                if(animator.GetBool("isWalking"))
+                    animator.SetBool("isWalking", false);
+            }
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(playerPos.x, transform.position.y), speed * Time.deltaTime);
         }
         else{
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetLocation.x, transform.position.y), speed * Time.deltaTime);
@@ -68,17 +74,12 @@ public class EnemyController : MonoBehaviour
                     return;
                 else{
                     hostile = true;
+                    playerPos = other.transform.position;
                     StartCoroutine(StartRaycast());
                     enemyUI.SetStatusBar("Hostile");
+                    transform.GetChild(4).GetComponent<EnemyAudio>().PlayHostile();
                 }
             }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        if(other.tag == "Player" && other.GetType() == typeof(CapsuleCollider2D)){
-            if(hostile)
-                enemyIdling = true;
         }
     }
 
@@ -89,43 +90,47 @@ public class EnemyController : MonoBehaviour
             RaycastHit2D hitinfo = Physics2D.Raycast(transform.position, transform.right, detectionRange, layerMask);
             if(hitinfo){
                 currentRescanCounter = rescanCounter;
-                if(enemyIdling)
-                    enemyUI.SetStatusBar("Hostile");
-                enemyIdling = false;
+                playerLocation = hitinfo.transform.position;
+                enemyUI.SetStatusBar("Hostile");
+                animator.SetBool("isWalking", true);
                 laserGun.StartFire();
+                yield return new WaitForSeconds(scanTimer);
             }
             else if(currentRescanCounter > 0){
-                enemyIdling = true;
-                enemyUI.SetStatusBar("Idle");
                 currentRescanCounter--;
+                yield return new WaitForSeconds(scanTimer);
             }
             else{
                 laserGun.StopFire();
-                enemyIdling = false;
                 hostile = false;
-                checkDirection();
-                enemyUI.SetStatusBar("Normal");
+                cooldown = true;
+                StartCoroutine(StartCooldown());
             }
-            yield return new WaitForSeconds(scanTimer);
+            
         }
     }
 
     IEnumerator StartCooldown()
     {
         int currentCooldownCounter = rescanCounter;
+        enemyIdling = true;
+        animator.SetBool("isWalking", false);
+        enemyUI.SetStatusBar("Idle");
+        CheckWalkAudio(false);
         while(cooldown){
             if(currentCooldownCounter > 0){
-                enemyIdling = true;
-                enemyUI.SetStatusBar("Idle");
                 currentCooldownCounter--;
+                yield return new WaitForSeconds(scanTimer);
             }
             else{
                 enemyIdling = false;
                 cooldown = false;
                 checkDirection();
+                animator.SetBool("isWalking", true);
+                CheckWalkAudio(true);
                 enemyUI.SetStatusBar("Normal");
             }
-            yield return new WaitForSeconds(scanTimer);
+            
         }
     }
 
@@ -144,5 +149,15 @@ public class EnemyController : MonoBehaviour
         else
             transform.rotation = Quaternion.Euler(0, 180, 0);
         isDirectionRight = isRight;
+    }
+
+    void CheckWalkAudio(bool value){
+        if(walkAudio == value)
+            return;
+        walkAudio = value;
+        if(walkAudio)
+            transform.GetChild(4).GetComponent<EnemyAudio>().PlayWalingAudio(true);
+        else
+            transform.GetChild(4).GetComponent<EnemyAudio>().PlayWalingAudio(false);
     }
 }

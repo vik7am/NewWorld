@@ -6,7 +6,7 @@ public class LaserGunController : MonoBehaviour
 {
     [SerializeField]GameObject laser;
     [SerializeField]float laserSpeed = 5f;
-    [SerializeField]float laserLife = 2f;
+    [SerializeField]float laserLife = 5f;
     Coroutine coroutine;
     bool fire;
 

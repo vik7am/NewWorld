@@ -9,9 +9,11 @@ public class InventoryController : MonoBehaviour
     int metalShards = 1;
     int ridgeWood = 2;
     PlayerAudio playerAudio;
+    EnemySpawner enemySpawner;
 
     private void Awake() {
         playerAudio = FindObjectOfType<PlayerAudio>();
+        enemySpawner = FindObjectOfType<EnemySpawner>();
     }
 
     public int getArrow(){
@@ -34,6 +36,7 @@ public class InventoryController : MonoBehaviour
     public void AddMetalShards(int value){
         playerAudio.PlayMetalShard();
         metalShards += value;
+        enemySpawner.EnemyDown();
     }
 
     public void AddRidgeWoods(int value){

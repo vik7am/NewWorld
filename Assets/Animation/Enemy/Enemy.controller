@@ -64,7 +64,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cf1a8b19241a17c458c8ffc0e0cb202a, type: 2}
+  m_Motion: {fileID: 7400000, guid: a32f07069ca1db8458494a33bfed57aa, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -113,7 +113,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: EWalk
-  m_Speed: 0.75
+  m_Speed: 0.6
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5441029710167381221}
@@ -126,7 +126,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 07662f69ecc25a24f981e802c9787b83, type: 2}
+  m_Motion: {fileID: 7400000, guid: cc78e58f063a0ed4280351be3a8b127b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

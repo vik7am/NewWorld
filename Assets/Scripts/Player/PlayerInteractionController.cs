@@ -23,8 +23,9 @@ public class PlayerInteractionController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        itemObject = other.gameObject;
+        
         if(other.tag == "Item"){
+            itemObject = other.gameObject;
             Collectablecontroller item = other.GetComponent<Collectablecontroller>();
             itemText = item.GetItemText();
             itemType = item.GetItemType();
@@ -32,6 +33,7 @@ public class PlayerInteractionController : MonoBehaviour
             isCollectable = true;
         }
         else if(other.tag == "Enemy" && other.GetType() == typeof(CapsuleCollider2D)){
+            itemObject = other.gameObject;
             if(!itemObject.GetComponent<EnemyUIController>().IsHostile()){
                 gameUI.DisplayCollectableBar("Silent Strike");
                 isKillable = true;
