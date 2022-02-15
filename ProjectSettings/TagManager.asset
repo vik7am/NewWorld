@@ -21,8 +21,8 @@ TagManager:
   - Ground
   - Grass
   - Lava
-  - 
-  - 
+  - Background
+  - Foliage
   - 
   - 
   - 
@@ -45,4 +45,28 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2591038441
+    locked: 0
+  - name: Foliage
+    uniqueID: 540364965
+    locked: 0
+  - name: Ground
+    uniqueID: 1162980443
+    locked: 0
+  - name: Enemy
+    uniqueID: 1298918025
+    locked: 0
+  - name: Player
+    uniqueID: 1689285111
+    locked: 0
+  - name: Grass
+    uniqueID: 2523256493
+    locked: 0
+  - name: Lava
+    uniqueID: 1050146183
+    locked: 0
+  - name: Water
+    uniqueID: 1196087827
     locked: 0

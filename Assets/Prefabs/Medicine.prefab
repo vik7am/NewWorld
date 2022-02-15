@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3510497000310667253}
   - component: {fileID: 3510497000310667254}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tilesheet_complete_2X_40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1771710803
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7849189931315230754, guid: 749385b05a98c80409c97a1ae6c5f8bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3510497000467163795}
   - component: {fileID: 3510497000467163796}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tilesheet_complete_2X_63
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,8 +150,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1771710803
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -3374109399990983760, guid: 749385b05a98c80409c97a1ae6c5f8bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 3510497000574280699}
   - component: {fileID: 2682984225129361910}
   - component: {fileID: 4131545918804167647}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Medicine
   m_TagString: Item
   m_Icon: {fileID: 0}

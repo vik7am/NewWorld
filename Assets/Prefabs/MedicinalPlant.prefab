@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3059651712560634940}
   - component: {fileID: 6126423843461764515}
   - component: {fileID: 7120483477637395495}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MedicinalPlant
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1771710803
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a9b56894a6727404bba33fbc3f568373, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
