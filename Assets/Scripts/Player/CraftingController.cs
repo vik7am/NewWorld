@@ -28,4 +28,16 @@ public class CraftingController : MonoBehaviour
             gameUI.UpdateWeaponBar();
         }
     }
+
+    public void AndroidCraft(){
+        if(craftingUI.gameObject.activeInHierarchy == false)
+            return;
+        if(inventory.GetRidgeWood() >=2 && inventory.GetMetalShards() >=1){
+            inventory.RemoveMetalShards(1);
+            inventory.RemoveRidgeWoods(2);
+            inventory.AddArrow(arrowPackSize);
+            craftingUI.UpdateUI();
+            gameUI.UpdateWeaponBar();
+        }
+    }
 }

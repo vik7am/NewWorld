@@ -56,7 +56,24 @@ public class PlayerInteractionController : MonoBehaviour
         if(isKillable){
             if(!itemObject.GetComponent<EnemyUIController>().IsHostile())
                 itemObject.GetComponent<EnemyHealth>().ReduceHp(100f);
-                
+        }
+    }
+
+    public void AndroidInteract(){
+        if(isCollectable){
+            if(itemType == 1)
+                inventory.AddRidgeWoods(5);
+            if(itemType == 2)
+                inventory.AddMetalShards(5);
+            if(itemType == 3)
+                if(!health.FillMedicinePouch(20))
+                    return;
+            Destroy(itemObject);
+            inventoryUI.UpdateUI();
+        }
+        if(isKillable){
+            if(!itemObject.GetComponent<EnemyUIController>().IsHostile())
+                itemObject.GetComponent<EnemyHealth>().ReduceHp(100f);
         }
     }
 

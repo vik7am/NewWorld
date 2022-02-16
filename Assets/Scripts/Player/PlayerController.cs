@@ -56,6 +56,18 @@ public class PlayerController : MonoBehaviour
         moveInput = value.Get<Vector2>();
     }
 
+    public void AndroidMove(Vector2 value){
+        moveInput = value;
+    }
+
+    public void AndroidJump(){
+        if(playerDown)
+            return;
+        if(!feet.IsTouchingLayers(LayerMask.GetMask("Ground", "Water", "Lava")))
+            return;
+        myrigidbody.velocity += new Vector2(0f, jumpSpeed);
+    }
+
     void OnJump(InputValue value){
         if(playerDown)
             return;
@@ -125,6 +137,14 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnCrafting(InputValue value){
+        ui.NewOnCrafting();
+    }
+
+    public void AndroidInventory(){
+        ui.NewOnInventory();
+    }
+
+    public void AndroidCrafting(){
         ui.NewOnCrafting();
     }
 

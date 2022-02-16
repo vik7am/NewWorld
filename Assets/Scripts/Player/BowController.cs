@@ -23,6 +23,13 @@ public class BowController : MonoBehaviour
         }     
     }
 
+    public void AndroidFireArrow(){
+        if(inventory.RemoveArrow(1)){
+            FireArrow();
+            gameUI.UpdateWeaponBar();
+        } 
+    }
+
     void FireArrow()
     {
         Vector2 firePos = transform.GetChild(0).position;
