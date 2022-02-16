@@ -35,7 +35,7 @@ public class PlayerInteractionController : MonoBehaviour
         else if(other.tag == "Enemy" && other.GetType() == typeof(CapsuleCollider2D)){
             itemObject = other.gameObject;
             if(!itemObject.GetComponent<EnemyUIController>().IsHostile()){
-                gameUI.DisplayCollectableBar("Silent Strike");
+                gameUI.DisplayCollectableBar("E - Silent Strike");
                 isKillable = true;
             }
         }

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     AudioSource audioSource;
     PlayerAudio playerAudio;
     CapsuleCollider2D feet;
+    UIController ui;
     bool playerDown;
     bool walkAudio = true;
     bool hidden;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         playerAudio = FindObjectOfType<PlayerAudio>();
         feet = GetComponent<CapsuleCollider2D>();
+        ui = FindObjectOfType<UIController>();
         
     }
 
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnMainMenu(InputValue value){
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
@@ -115,6 +118,14 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDown(){
         playerDown = true;
+    }
+
+    void OnInventory(InputValue value){
+        ui.NewOnInventory();
+    }
+
+    void OnCrafting(InputValue value){
+        ui.NewOnCrafting();
     }
 
 }

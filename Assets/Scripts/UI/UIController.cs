@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class UIController : MonoBehaviour
     int activeUI;
     InventoryUIController inventoryUI;
     CraftingUIController craftingUI;
+    GameUIController gameUI;
 
     private void Awake() {
         inventoryUI = FindObjectOfType<InventoryUIController>();
         craftingUI = FindObjectOfType<CraftingUIController>();
+        gameUI = FindObjectOfType<GameUIController>();
     }
 
     void Start()
@@ -39,8 +42,7 @@ public class UIController : MonoBehaviour
                 transform.GetChild(i).gameObject.SetActive(false);
     }
 
-    void OnInventory(InputValue value){
-        
+    public void NewOnInventory(){
         if(getActiveUI() == 0){   
             PauseGame();
             DisplayInventoryUI();
@@ -54,7 +56,7 @@ public class UIController : MonoBehaviour
         }
     }
 
-    void OnCrafting(InputValue value){
+    public void NewOnCrafting(){
         if(getActiveUI() == 0){
             PauseGame();
             DisplayCraftingUI();
