@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -64,8 +65,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnExitGame(InputValue value){
-        Application.Quit();
+    void OnMainMenu(InputValue value){
+        SceneManager.LoadScene(0);
     }
 
     void Run(){
@@ -115,4 +116,5 @@ public class PlayerController : MonoBehaviour
     public void PlayerDown(){
         playerDown = true;
     }
+
 }

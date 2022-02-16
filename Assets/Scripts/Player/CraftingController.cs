@@ -8,11 +8,13 @@ public class CraftingController : MonoBehaviour
     [SerializeField]int arrowPackSize = 10;
     InventoryController inventory;
     CraftingUIController craftingUI;
+    GameUIController gameUI;
     
     void Awake()
     {
         inventory = FindObjectOfType<InventoryController>();
         craftingUI = FindObjectOfType<CraftingUIController>();
+        gameUI = FindObjectOfType<GameUIController>();
     }
 
     void OnCraft(InputValue value){
@@ -23,6 +25,7 @@ public class CraftingController : MonoBehaviour
             inventory.RemoveRidgeWoods(2);
             inventory.AddArrow(arrowPackSize);
             craftingUI.UpdateUI();
+            gameUI.UpdateWeaponBar();
         }
     }
 }

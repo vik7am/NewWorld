@@ -14,5 +14,8 @@ public class ArrowController : MonoBehaviour
         if(other.tag == "Laser"){
             Destroy(gameObject);
         }
+        if(other.tag == "Platform"){
+            Destroy(gameObject);
+        }
     }
 }

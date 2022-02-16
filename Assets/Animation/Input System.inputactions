@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ExitGame",
+                    "name": "MainMenu",
                     "type": "Button",
                     "id": "90bfd6f7-6015-48fa-8789-a3c4e919e1b6",
                     "expectedControlType": "Button",
@@ -355,7 +355,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "ExitGame",
+                    "action": "MainMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -374,6 +374,17 @@
                     "name": "",
                     "id": "b16082bd-fc07-42c4-994e-6d58062106bc",
                     "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f5341e0-3625-46f2-b7bd-6d0d0237cb5e",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
