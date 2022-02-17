@@ -27,7 +27,7 @@ public class WeaponController : MonoBehaviour
         //android.InitializeBow(myBow.GetComponent<BowController>());
     }
 
-    void OnWeapon1(InputValue value){
+    public void Weapon1(){
         if(myBow == null){
             myBow = Instantiate(bow, transform.position, transform.rotation, transform);
         }
@@ -45,25 +45,7 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void AndroidWeapon(){
-        if(myBow == null){
-            myBow = Instantiate(bow, transform.position, transform.rotation, transform);
-        }
-        if(bowEquipped){
-            bowEquipped = false;
-            gameUI.HideWeaponBar();
-            myBow.SetActive(false);
-            animator.SetBool("isFighting", false);
-        }
-        else{
-            bowEquipped = true;
-            gameUI.DisplayWeaponBar();
-            myBow.SetActive(true);
-            animator.SetBool("isFighting", true);
-        }
-    }
-
-    public void AndroidFireBow(){
+    public void FireBow(){
         if(bowEquipped){
             myBow.GetComponent<BowController>().AndroidFireArrow();
         }

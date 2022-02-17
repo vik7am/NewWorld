@@ -31,23 +31,7 @@ public class PlayerHealth : MonoBehaviour
         return true;
     }
 
-    public void OnHeal(InputValue value){
-        if(health == playerHealth || medicinePouch == 0)
-            return;
-        float requiredHealing = playerHealth - health;
-        if(medicinePouch >= requiredHealing){
-            health = playerHealth;
-            medicinePouch -= requiredHealing;
-        }
-        else{
-            health += medicinePouch;
-            medicinePouch = 0f;
-        }
-        gameUI.UpdateHealthBar(health);
-        gameUI.UpdateMedicineBar(medicinePouch);
-    }
-
-    public void AndroidHeal(){
+    public void Heal(){
         if(health == playerHealth || medicinePouch == 0)
             return;
         float requiredHealing = playerHealth - health;

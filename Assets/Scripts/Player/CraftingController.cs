@@ -17,19 +17,7 @@ public class CraftingController : MonoBehaviour
         gameUI = FindObjectOfType<GameUIController>();
     }
 
-    void OnCraft(InputValue value){
-        if(craftingUI.gameObject.activeInHierarchy == false)
-            return;
-        if(inventory.GetRidgeWood() >=2 && inventory.GetMetalShards() >=1){
-            inventory.RemoveMetalShards(1);
-            inventory.RemoveRidgeWoods(2);
-            inventory.AddArrow(arrowPackSize);
-            craftingUI.UpdateUI();
-            gameUI.UpdateWeaponBar();
-        }
-    }
-
-    public void AndroidCraft(){
+    public void Craft(){
         if(craftingUI.gameObject.activeInHierarchy == false)
             return;
         if(inventory.GetRidgeWood() >=2 && inventory.GetMetalShards() >=1){

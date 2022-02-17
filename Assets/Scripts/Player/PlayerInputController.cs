@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class AndroidInput : MonoBehaviour
+public class PlayerInputController : MonoBehaviour
 {
     PlayerController player;
     WeaponController weapon;
     PlayerHealth health;
     CraftingController crafting;
     PlayerInteractionController interact;
+
     void Awake()
     {
         player = FindObjectOfType<PlayerController>();
@@ -19,57 +21,45 @@ public class AndroidInput : MonoBehaviour
         interact = FindObjectOfType<PlayerInteractionController>();
     }
 
-    public void KeyHoldA(){
-        player.Move(new Vector2(-1, 0));
+    void OnMove(InputValue value){
+        player.Move(value.Get<Vector2>());
     }
 
-    public void KeyReleasedA(){
-        player.Move(new Vector2(0, 0));
-    }
-
-    public void KeyHoldD(){
-        player.Move(new Vector2(1, 0));
-    }
-
-    public void KeyReleasedD(){
-        player.Move(new Vector2(0, 0));
-    }
-
-    public void KeyPressedE(){
+    void OnInteract(InputValue value){
         interact.Interact();
     }
 
-    public void KeyPressedX(){
+    void OnFire(InputValue value){
         weapon.FireBow();
     }
 
-    public void KeyHoldSpace(){
+    void OnJump(InputValue value){
         player.Jump();
     }
 
-    public void KeyPressed1(){
+    void OnWeapon1(InputValue value){
         weapon.Weapon1();
     }
 
-    public void KeyPressedH(){
+    void OnHeal(InputValue value){
         health.Heal();
     }
 
-    public void KeyPressedF(){
+    void OnCraft(InputValue value){
         crafting.Craft();
     }
 
-    public void KeyPressedI(){
+    void OnInventory(InputValue value){
         player.Inventory();
     }
 
-    public void KeyPressedK(){
+    void OnCrafting(InputValue value){
         player.Crafting();
     }
 
-    public void KeyPressedQ(){
+    public void OnMainMenu(){
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
-    
+
 }

@@ -353,7 +353,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 65422314}
           m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-          m_MethodName: StartLeft
+          m_MethodName: KeyHoldA
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -369,7 +369,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 65422314}
           m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-          m_MethodName: StopMovement
+          m_MethodName: KeyReleasedA
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1614,7 +1614,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 139301023}
           m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-          m_MethodName: Jump
+          m_MethodName: KeyHoldSpace
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2658,7 +2658,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 251922961}
         m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-        m_MethodName: EquipWeapon
+        m_MethodName: KeyPressed1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3042,7 +3042,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: W
+  m_Text: 1
 --- !u!222 &326109976
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3227,7 +3227,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 362687919}
         m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-        m_MethodName: Interact
+        m_MethodName: KeyPressedE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3718,7 +3718,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 415864482}
         m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-        m_MethodName: Heal
+        m_MethodName: KeyPressedH
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4492,7 +4492,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 625714126}
         m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-        m_MethodName: ExitMainMenu
+        m_MethodName: KeyPressedQ
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11506,7 +11506,6 @@ GameObject:
   - component: {fileID: 826631376}
   - component: {fileID: 826631375}
   - component: {fileID: 826631379}
-  - component: {fileID: 826631380}
   m_Layer: 5
   m_Name: User Interface
   m_TagString: Untagged
@@ -11611,36 +11610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026195cb079be4b4c821bee136f7b985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &826631380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826631374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 259d946ec657e4a43bd7907c929c6a28, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &851718918
 GameObject:
   m_ObjectHideFlags: 0
@@ -12320,7 +12289,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 920748547}
         m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-        m_MethodName: FireArrow
+        m_MethodName: KeyPressedX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14151,6 +14120,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0869d9849c8f001478e46128685f83a3, type: 3}
+--- !u!1 &1195976703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1073378561138539167, guid: 8957ef792ccf07b489416d65fe9d697f, type: 3}
+  m_PrefabInstance: {fileID: 1073378561631718455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1195976712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195976703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 484d321539e17e54caccd6e867bbe63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1197207226
 GameObject:
   m_ObjectHideFlags: 0
@@ -14644,7 +14630,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1336460037}
         m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-        m_MethodName: Inventory
+        m_MethodName: KeyPressedI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16853,7 +16839,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1723120520}
         m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-        m_MethodName: CraftArrows
+        m_MethodName: KeyPressedF
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17466,7 +17452,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1793346489}
           m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-          m_MethodName: StartRight
+          m_MethodName: KeyHoldD
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -17482,7 +17468,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1793346489}
           m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-          m_MethodName: StopMovement
+          m_MethodName: KeyReleasedD
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -18314,7 +18300,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'A/D - Move  ::  Space - Jump  ::  E - Interact  ::  H - Heal  ::  LeftClick/Ctr
+  m_Text: 'A/D - Move  ::  Space - Jump  ::  E - Interact  ::  H - Heal  ::  RightClick/Ctr
     - Fire'
 --- !u!222 &1962727067
 CanvasRenderer:
@@ -18781,7 +18767,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2081167008}
         m_TargetAssemblyTypeName: AndroidInput, Assembly-CSharp
-        m_MethodName: CraftingMenu
+        m_MethodName: KeyPressedK
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19031,7 +19017,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: C
+  m_Text: K
 --- !u!222 &2112754608
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19152,7 +19138,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1363121774, guid: 8957ef792ccf07b489416d65fe9d697f, type: 3}
+    - {fileID: 1790827993, guid: 8957ef792ccf07b489416d65fe9d697f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8957ef792ccf07b489416d65fe9d697f, type: 3}
 --- !u!1001 &1987600359872839011
 PrefabInstance:

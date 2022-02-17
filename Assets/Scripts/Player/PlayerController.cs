@@ -52,31 +52,16 @@ public class PlayerController : MonoBehaviour
             GetComponent<PlayerHealth>().ReduceHealth(100);
     }
 
-    void OnMove(InputValue value){
-        moveInput = value.Get<Vector2>();
-    }
-
-    public void AndroidMove(Vector2 value){
+    public void Move(Vector2 value){
         moveInput = value;
     }
 
-    public void AndroidJump(){
+    public void Jump(){
         if(playerDown)
             return;
         if(!feet.IsTouchingLayers(LayerMask.GetMask("Ground", "Water", "Lava")))
             return;
         myrigidbody.velocity += new Vector2(0f, jumpSpeed);
-    }
-
-    void OnJump(InputValue value){
-        if(playerDown)
-            return;
-        if(!feet.IsTouchingLayers(LayerMask.GetMask("Ground", "Water", "Lava")))
-            return;
-        //isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        if(value.isPressed){
-            myrigidbody.velocity += new Vector2(0f, jumpSpeed);
-        }
     }
 
     void OnMainMenu(InputValue value){
@@ -132,19 +117,12 @@ public class PlayerController : MonoBehaviour
         playerDown = true;
     }
 
-    void OnInventory(InputValue value){
+
+    public void Inventory(){
         ui.NewOnInventory();
     }
 
-    void OnCrafting(InputValue value){
-        ui.NewOnCrafting();
-    }
-
-    public void AndroidInventory(){
-        ui.NewOnInventory();
-    }
-
-    public void AndroidCrafting(){
+    public void Crafting(){
         ui.NewOnCrafting();
     }
 
